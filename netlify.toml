@@ -1,2 +1,5 @@
+[build]
+  publish = "dist/"
+
 [context.production]
   command = "APP_ENV=production npm run dist"
