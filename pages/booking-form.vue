@@ -23,6 +23,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="name"
+            v-model="name"
             type="text"
             name="name"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -40,6 +41,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="organization_name"
+            v-model="organization_name"
             type="text"
             name="organization_name"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -57,6 +59,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="address"
+            v-model="address"
             type="text"
             name="address"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -74,6 +77,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="phone_number"
+            v-model="phone_number"
             type="text"
             name="phone_number"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -91,6 +95,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="peoples_count"
+            v-model="peoples_count"
             type="number"
             name="peoples_count"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -108,6 +113,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="schedule_id"
+            v-model="schedule_id"
             type="text"
             name="schedule_id"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -135,9 +141,31 @@
 
 <script>
 export default {
+  data() {
+    return {
+      name: null,
+      organization_name: null,
+      address: null,
+      phone_number: null,
+      peoples_count: null,
+      schedule_id: null,
+    }
+  },
+
   methods: {
-    submit() {
-      this.$axios.post(`/register`)
+    async submit() {
+      try {
+        await this.$axios.post(`/register`, {
+          name: this.name,
+          organization_name: this.organization_name,
+          address: this.address,
+          phone_number: this.phone_number,
+          peoples_count: this.peoples_count,
+          schedule_id: this.schedule_id,
+        })
+      } catch (e) {
+        //
+      }
     },
   },
 }
