@@ -2,4 +2,4 @@
   publish = "dist/"
 
 [context.production]
-  command = "APP_ENV=production npm run dist"
+  command = "APP_ENV=production API_BASEURL=$PROD_API_URL GOOGLE_RECAPTCHA_KEY=$PROD_GOOGLE_RECAPTCHA_KEY npm run dist"
