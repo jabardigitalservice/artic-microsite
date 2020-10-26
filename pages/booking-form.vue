@@ -23,7 +23,25 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="name"
+            type="text"
             name="name"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label
+          for="organization_name"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Nama Organisasi / Instansi
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="organization_name"
+            type="text"
+            name="organization_name"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
           />
         </div>
@@ -39,6 +57,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="address"
+            type="text"
             name="address"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
           />
@@ -55,7 +74,42 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="phone_number"
+            type="text"
             name="phone_number"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label
+          for="peoples_count"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Estimasi Jumlah Peserta
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="peoples_count"
+            type="number"
+            name="peoples_count"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label
+          for="schedule_id"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Jadwal Kunjungan
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="schedule_id"
+            type="text"
+            name="schedule_id"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
           />
         </div>
