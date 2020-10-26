@@ -1,0 +1,79 @@
+<template>
+  <div class="p-8">
+    <div class="rounded-lg border border-blue-500">
+      <div class="px-4 py-5 sm:p-6">
+        <h3 class="leading-6 font-bold text-gray-900">Data Calon Pengunjung</h3>
+        <div class="mt-2 max-w-xl text-sm leading-5 text-gray-900">
+          <p>
+            Silahkan isi kelengkapan informasi calon pengunjung Jabar Command
+            Center.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="mt-8">
+      <div>
+        <label
+          for="name"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Nama Penanggung Jawab
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="name"
+            name="name"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label
+          for="address"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Alamat Penanggung Jawab / Organisasi / Instansi
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="address"
+            name="address"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-4">
+        <label
+          for="phone_number"
+          class="block text-gray-700 leading-5 text-sm font-medium"
+        >
+          Nomor Telepon
+          <span class="text-red-500">*</span>
+        </label>
+        <div class="mt-1 relative rounded-md">
+          <input
+            id="phone_number"
+            name="phone_number"
+            class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+          />
+        </div>
+      </div>
+      <div class="mt-12 text-center">
+        <nuxt-link
+          to="/"
+          class="block bg-blue-500 text-white font-semibold text-center py-2 px-4 rounded"
+        >
+          Lanjutkan
+        </nuxt-link>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  //
+}
+</script>

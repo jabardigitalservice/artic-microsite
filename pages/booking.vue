@@ -1,6 +1,8 @@
 <template>
-  <div class="p-4">
-    <h2 class="text-xl text-gray-900 text-center">Syarat dan Ketentuan</h2>
+  <div class="p-8">
+    <h3 class="text-center leading-6 font-bold text-gray-900">
+      Syarat dan Ketentuan
+    </h3>
     <div class="mt-4 text-sm">
       <p>
         Pendaftaran Peserta Tes Masif COVID-19 bersifat terbatas dan
@@ -21,7 +23,7 @@
     <div class="mt-12 text-center">
       <nuxt-link
         to="/booking-form"
-        class="block bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white text-center py-2 px-4 border border-blue-500 hover:border-transparent rounded"
+        class="block bg-blue-500 text-white font-semibold text-center py-2 px-4 rounded"
       >
         Ya, Saya Mengerti
       </nuxt-link>

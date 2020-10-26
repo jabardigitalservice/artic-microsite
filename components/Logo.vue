@@ -1,5 +1,5 @@
 <template>
   <div>
-    <img src="/jabarcommandcenter-logo.png" class="mx-auto" width="400" />
+    <img src="/jabarcommandcenter-logo.png" class="mx-auto" height="400" />
   </div>
 </template>
