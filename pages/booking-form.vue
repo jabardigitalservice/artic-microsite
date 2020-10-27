@@ -31,6 +31,26 @@
         </div>
       </div>
       <div class="mt-4">
+        <div>
+          <label
+            for="personal_identity"
+            class="block text-gray-700 leading-5 text-sm font-medium"
+          >
+            Nomor Identitas Penanggung Jawab (NIK)
+            <span class="text-red-500">*</span>
+          </label>
+          <div class="mt-1 relative rounded-md">
+            <input
+              id="personal_identity"
+              v-model="personal_identity"
+              type="text"
+              name="name"
+              class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="mt-4">
         <label
           for="organization_name"
           class="block text-gray-700 leading-5 text-sm font-medium"
@@ -140,10 +160,13 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
+
 export default {
   data() {
     return {
       name: null,
+      personal_identity: null,
       organization_name: null,
       address: null,
       phone_number: null,
@@ -157,12 +180,19 @@ export default {
       try {
         await this.$axios.post(`/register`, {
           name: this.name,
+          personal_identity: this.personal_identity,
           organization_name: this.organization_name,
           address: this.address,
           phone_number: this.phone_number,
           peoples_count: this.peoples_count,
           schedule_id: this.schedule_id,
         })
+
+        await Swal.fire(
+          '',
+          'Permintaan reservasi berhasil dibuat. Silahkan unduh bukti pendaftaran.',
+          'success'
+        )
       } catch (e) {
         //
       }
