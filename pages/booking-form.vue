@@ -42,7 +42,7 @@
           <div class="mt-1 relative rounded-md">
             <input
               id="personal_identity"
-              v-model="personal_identity"
+              v-model="personalIdentity"
               type="text"
               name="name"
               class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -61,7 +61,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="organization_name"
-            v-model="organization_name"
+            v-model="organizationName"
             type="text"
             name="organization_name"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -97,7 +97,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="phone_number"
-            v-model="phone_number"
+            v-model="phoneNumber"
             type="text"
             name="phone_number"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -115,7 +115,7 @@
         <div class="mt-1 relative rounded-md">
           <input
             id="peoples_count"
-            v-model="peoples_count"
+            v-model="peoplesCount"
             type="number"
             name="peoples_count"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
@@ -131,13 +131,20 @@
           <span class="text-red-500">*</span>
         </label>
         <div class="mt-1 relative rounded-md">
-          <input
+          <select
             id="schedule_id"
-            v-model="schedule_id"
+            v-model="scheduleId"
             type="text"
             name="schedule_id"
             class="block pr-10 border-2 rounded w-full py-2 px-2 text-gray-700 leading-tight focus:outline-none"
-          />
+          >
+            <option
+              v-for="schedulesOption in schedulesOptions"
+              :key="schedulesOption['id']"
+            >
+              {{ schedulesOption['text'] }}
+            </option>
+          </select>
         </div>
       </div>
       <div class="mt-8 text-center">
@@ -166,26 +173,48 @@ export default {
   data() {
     return {
       name: null,
-      personal_identity: null,
-      organization_name: null,
+      personalIdentity: null,
+      organizationName: null,
       address: null,
-      phone_number: null,
-      peoples_count: null,
-      schedule_id: null,
+      phoneNumber: null,
+      peoplesCount: null,
+      scheduleId: null,
+      schedulesOptions: [],
     }
   },
 
+  mounted() {
+    this.fetchSchedules()
+  },
+
   methods: {
+    async fetchSchedules() {
+      try {
+        const { data: schedules } = await this.$axios.$get(
+          `/register/schedules`
+        )
+
+        this.schedulesOptions = schedules.map((schedule) => {
+          return {
+            value: schedule.id,
+            text: `${schedule.start_at} (Kapasitas Tersedia: ${schedule.quota_available} orang)`,
+          }
+        })
+      } catch (error) {
+        //
+      }
+    },
+
     async submit() {
       try {
-        await this.$axios.post(`/register`, {
+        await this.$axios.$post(`/register`, {
           name: this.name,
-          personal_identity: this.personal_identity,
-          organization_name: this.organization_name,
+          personal_identity: this.personalIdentity,
+          organization_name: this.organizationName,
           address: this.address,
-          phone_number: this.phone_number,
-          peoples_count: this.peoples_count,
-          schedule_id: this.schedule_id,
+          phone_number: this.phoneNumber,
+          peoples_count: this.peoplesCount,
+          schedule_id: this.scheduleId,
         })
 
         await Swal.fire(
@@ -193,8 +222,19 @@ export default {
           'Permintaan reservasi berhasil dibuat. Silahkan unduh bukti pendaftaran.',
           'success'
         )
-      } catch (e) {
-        //
+      } catch (error) {
+        if (error.response && error.response.status === 422) {
+          const firstErrorKey = Object.keys(error.response.data.errors)[0]
+          const firstMessage = error.response.data.errors[firstErrorKey][0]
+
+          return await Swal.fire('', firstMessage, 'error')
+        }
+
+        return await Swal.fire(
+          'Telah terjadi kesalahan sistem',
+          'Silahkan ulangi beberapa saat kembali.',
+          'error'
+        )
       }
     },
   },
