@@ -215,7 +215,7 @@ export default {
 
     async submit() {
       try {
-        await this.$axios.$post(`/register`, {
+        const { data } = await this.$axios.$post(`/register`, {
           name: this.name,
           personal_identity: this.personalIdentity,
           organization_name: this.organizationName,
@@ -225,11 +225,15 @@ export default {
           schedule_id: this.scheduleId,
         })
 
-        await Swal.fire(
-          '',
-          'Permintaan reservasi berhasil dibuat. Silahkan unduh bukti pendaftaran.',
-          'success'
-        )
+        await Swal.fire({
+          title: '',
+          text:
+            'Permintaan reservasi berhasil dibuat. Silahkan unduh bukti pendaftaran.',
+          icon: 'success',
+          confirmButtonText: 'Unduh Bukti Reservasi',
+        })
+
+        window.open(data.document_url)
       } catch (error) {
         if (error.response && error.response.status === 422) {
           const firstErrorKey = Object.keys(error.response.data.errors)[0]
