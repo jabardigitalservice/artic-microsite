@@ -168,6 +168,8 @@
 
 <script>
 import Swal from 'sweetalert2'
+import { format } from 'date-fns'
+import { id } from 'date-fns/locale'
 
 export default {
   data() {
@@ -195,9 +197,14 @@ export default {
         )
 
         this.schedulesOptions = schedules.map((schedule) => {
+          const dateStart = new Date(schedule.start_at)
+          const dateText = format(dateStart, 'eeee, dd MMMM yyyy HH:mm', {
+            locale: id,
+          })
+
           return {
             value: schedule.id,
-            text: `${schedule.start_at} (Kapasitas Tersedia: ${schedule.quota_available} orang)`,
+            text: `${dateText} (Kapasitas Tersedia: ${schedule.quota_available} orang)`,
           }
         })
       } catch (error) {
