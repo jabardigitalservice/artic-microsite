@@ -140,6 +140,7 @@
           >
             <option
               v-for="schedulesOption in schedulesOptions"
+              :value="schedulesOption['value']"
               :key="schedulesOption['id']"
             >
               {{ schedulesOption['text'] }}
