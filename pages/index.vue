@@ -15,5 +15,10 @@
 </template>
 
 <script>
-export default {}
+export default {
+  mounted() {
+    // Ping Backend Service
+    this.$axios.$get(`/`)
+  },
+}
 </script>
