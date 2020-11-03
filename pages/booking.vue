@@ -1,26 +1,20 @@
 <template>
   <div class="p-8">
     <h3 class="text-center leading-6 font-bold text-gray-900">
-      Syarat dan Ketentuan
+      Selamat Datang
     </h3>
     <div class="mt-4 text-sm">
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Jabar Command Center merupakan fasilitas publik yang dikelola oleh
+        Pemerintah Provinsi Jawa Barat.
       </p>
       <p class="mt-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Saat ini Jabar Command Center menerapkan pembatasan berupa kuota
+        kunjungan sebagai bagian dari penerapan protokol kesehatan.
       </p>
       <p class="mt-4">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+        Silakan lakukan reservasi kunjungan dengan selalu menggunakan masker dan
+        tetap patuhi protokol kesehatan yang ada.
       </p>
     </div>
 
